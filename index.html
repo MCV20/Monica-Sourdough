@@ -141,7 +141,7 @@ footer{padding:2rem 0 3rem;color:var(--muted);font-size:.95rem;border-top:1px so
   <h2 id="how-title">How it works</h2>
   <ol class="steps">
     <li><strong>Tell me what you want.</strong><br>Send a request below with the loaf and when you’d like pickup.</li>
-    <li><strong>I fit it into a batch.</strong><br>I group orders into the bake that works best and confirm your date.</li>
+    <li><strong>I put it in a batch.</strong><br>Your order goes into a bake this week or the following week. I confirm your date by message.</li>
     <li><strong>Pick up or get it delivered.</strong><br>Pick up at Brown or have it delivered nearby for a small fee. Pay by cash or Venmo.</li>
   </ol>
 </section>
@@ -193,11 +193,12 @@ footer{padding:2rem 0 3rem;color:var(--muted);font-size:.95rem;border-top:1px so
     <label>Delivery address (only if you chose delivery)
       <input name="addr" autocomplete="street-address">
     </label>
-    <label>When works for you? (optional)
-      <input name="when" placeholder="e.g. Thursday evening, or any day this week">
+    <label>Preferred timing (optional)
+      <input name="when" placeholder="e.g. this week, next week, or Thursday evening">
     </label>
+    <p class="note">I bake in batches. I’ll put your order in a batch this week or the following week and confirm your date by message.</p>
     <label>Plain ($10 each)
-      <input type="number" name="plain" min="0" max="12" value="1" inputmode="numeric">
+      <input type="number" name="plain" min="0" max="12" value="0" inputmode="numeric">
     </label>
     <label>Cranberry &amp; Walnut ($12 each)
       <input type="number" name="cranberry" min="0" max="12" value="0" inputmode="numeric">
@@ -261,8 +262,7 @@ var CONFIG = {
     return { n: n, p: p };
   }
   function upd(){
-    var t = tally();
-    totalEl.textContent = t.n ? t.n + (t.n === 1 ? " loaf" : " loaves") + " · $" + t.p + " before any delivery fee" : "";
+    totalEl.textContent = "";
   }
   form.addEventListener("input", upd);
   upd();
